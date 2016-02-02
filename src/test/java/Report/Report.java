@@ -9,13 +9,12 @@ import java.io.BufferedWriter;
 import java.io.IOException;
  
 public class Report {
-	
-	static long endTime = System.currentTimeMillis() / 1000L;
+
 	static String startTime = "";
 	
 	public static void createHTML(){
 		
-		File newfile = new File("FinalReport.html");
+		File newfile = new File(TakeScreenshot_Test.filePath + "FinalReport.html");
 	    boolean bool;
 	    String frontEnd = "";
 	    CSVReader.csv();
@@ -62,10 +61,10 @@ public class Report {
 	      frontEnd = frontEnd.replace("avgrestime", CSVReader.restime1);
 	      frontEnd = frontEnd.replace("transactions", CSVReader.ttransactions);
 	      frontEnd = frontEnd.replace("error", CSVReader.errorrate);
-	      System.out.println("***" + endTime);
+	      System.out.println("***" +TakeScreenshot_Test.endTime);
 	      System.out.println("***" + startTime);
 	      frontEnd = frontEnd.replaceAll("begintime", startTime);
-	      frontEnd = frontEnd.replaceAll("endtime", String.valueOf(endTime));
+	      frontEnd = frontEnd.replaceAll("endtime", String.valueOf(TakeScreenshot_Test.endTime));
 
 	     FileWriter fw;
 			try {

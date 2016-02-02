@@ -14,16 +14,25 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class TakeScreenshot_Test {
 
+	static long endTime = System.currentTimeMillis() / 1000L;
+	static String filePath = "C:/Users/umangtiwari/HTMLReport/";
 	static WebDriver driver;
 	static String graph =".nav-tabs-content>div:nth-child(1)>div:nth-child(1)>.clearfix>ul>li:nth-child(2)>.chart>div:nth-child(2)>svg";
 	
 	@Test
 	public static void loadTestReport() {
+		
+		try {
+			DownloadStatusAfterTest.statusPagesafterTest();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
 		 driver = new FirefoxDriver();
 		 driver.manage().window().maximize();
 		 driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
 		TakeScreenshot_Test ts = new TakeScreenshot_Test();
-		driver.get("https://cengagecloud.tv.appneta.com/app/CXP_Stage_App#fs="+Report.startTime + "&fe=" + Report.endTime + "&filter=cxp");
+		driver.get("https://cengagecloud.tv.appneta.com/app/CXP_Stage_App#fs="+Report.startTime + "&fe=" + endTime + "&filter=cxp");
 		
 		ts.login();
 		ts.takeScreenshot("AppServer");
@@ -55,22 +64,20 @@ public class TakeScreenshot_Test {
 	}
 
 	public void takeScreenshot(String title) {
-		File file = new File(System.getProperty("user.dir") + File.separator);
+		File file = new File(filePath + File.separator);
 		boolean exists = file.exists();
 		if (!exists) {
-			new File(System.getProperty("user.dir") + File.separator).mkdir();
+			new File(filePath + File.separator).mkdir();
 		}
 
 		File scrFile = ((TakesScreenshot) driver)
 				.getScreenshotAs(OutputType.FILE);
 		try {
-			String saveImgFile = System.getProperty("user.dir")+ File.separator + title + "_screenshot.png";
+			String saveImgFile = filePath + File.separator + title + "_screenshot.png";
 			System.out.println("[INFO]: Save Image File Path : " + saveImgFile);
 			FileUtils.copyFile(scrFile, new File(saveImgFile));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
-
-	String screenshotPath = "/target/Screenshots", testname = "Samplw";
 }
