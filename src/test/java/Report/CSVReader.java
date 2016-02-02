@@ -15,7 +15,7 @@ public class CSVReader {
 	
 public static void csv(){
 
-	      String fileName = "Aggregate.csv";
+	      String fileName = TakeScreenshot_Test.filePath + "Aggregate.csv";
 
 			try {
 				
