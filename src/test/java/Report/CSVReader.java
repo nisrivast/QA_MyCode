@@ -25,7 +25,6 @@ public static void csv(){
 				br = new BufferedReader(new FileReader(fileName));
 				
 				while ((line = br.readLine()) != null) {
-					// use comma as separator
 					String[] data = line.split(cvsSplitBy);
 					if (data[0].equalsIgnoreCase("Total")){
 						ttransactions = data[1];
@@ -36,7 +35,6 @@ public static void csv(){
 				br.close();
 			}	
 			 catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			} 
 		}	
