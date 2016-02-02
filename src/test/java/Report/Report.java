@@ -35,7 +35,7 @@ public class Report {
 		
 		try {
 			br = new BufferedReader(new FileReader("Format.html"));
-			br2 = new BufferedReader(new FileReader("StartTime.txt"));
+			br2 = new BufferedReader(new FileReader(TakeScreenshot_Test.filePath + "StartTime.txt"));
 		} catch (FileNotFoundException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
