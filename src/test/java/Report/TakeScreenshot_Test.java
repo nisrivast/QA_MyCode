@@ -11,8 +11,6 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-//import org.testng.annotations.Test;
-import org.testng.annotations.Test;
 
 public class TakeScreenshot_Test {
 
