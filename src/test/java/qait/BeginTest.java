@@ -13,7 +13,8 @@ import org.testng.annotations.Test;
 
 public class BeginTest {
 
-	static long startTime;
+	static long startTime = System.currentTimeMillis() / 1000L;
+	static String filePath = "C:/Users/umangtiwari/HTMLReport/";
 
 	@Test
 	public static void beforeTest() throws IOException{
@@ -27,11 +28,10 @@ public class BeginTest {
 
 		for(int i=0; i<=2; i++){
 
-			String filepath = "D:/Knewton_Workspace/time/";
-			String fileName = filepath + url[i] + "_BeforeTest_Status.csv"; //The file that will be saved on your computer
-			URL link = new URL("http://" + url[i] + "/activityservice/csv-stats.jsp"); //The file that you want to download
+			String fileName = filePath + url[i] + "_BeforeTest_Status.csv";
+			URL link = new URL("http://" + url[i] + "/activityservice/csv-stats.jsp");
 
-			//Code to download
+			//download server status pages
 			InputStream in = new BufferedInputStream(link.openStream());
 			ByteArrayOutputStream out = new ByteArrayOutputStream();
 			byte[] buf = new byte[1024];
@@ -47,21 +47,20 @@ public class BeginTest {
 			FileOutputStream fos = new FileOutputStream(fileName);
 			fos.write(response);
 			fos.close();
-			//End download code
+			//End download
 		}		 
 		System.out.println("Finished");
 
 	}
 
 	public static void startTimeFile(){
-
-		startTime = System.currentTimeMillis() / 1000L;  
+  
 		boolean bool = false;
-		String fileName = "D:/Knewton_Workspace/time/StartTime.txt";
+		String fileName = filePath + "StartTime.txt";
 		File file = new File(fileName);
 
 		try{
-			// tries to create new file in the system
+			// creates new file to save start time of test
 			bool = file.createNewFile();
 		}
 		catch(Exception e){
