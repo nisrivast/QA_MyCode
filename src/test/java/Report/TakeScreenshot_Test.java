@@ -20,19 +20,16 @@ public class TakeScreenshot_Test {
 	static String graph =".nav-tabs-content>div:nth-child(1)>div:nth-child(1)>.clearfix>ul>li:nth-child(2)>.chart>div:nth-child(2)>svg";
 	
 	@Test
-	public static void loadTestReport() {
+	public static void loadTestReport() throws IOException {
 		
-		try {
-			DownloadStatusAfterTest.statusPagesafterTest();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		DownloadStatusAfterTest.statusPagesafterTest();
+		Delta.sspDelta();
 		
-		 driver = new FirefoxDriver();
-		 driver.manage().window().maximize();
-		 driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
+		driver = new FirefoxDriver();
+		driver.manage().window().maximize();
+		driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
 		TakeScreenshot_Test ts = new TakeScreenshot_Test();
-		driver.get("https://cengagecloud.tv.appneta.com/app/CXP_Stage_App#fs="+Report.startTime + "&fe=" + endTime + "&filter=cxp");
+		driver.get("https://cengagecloud.tv.appneta.com/app/CXP_Stage_App/app_server#fs="+Report.startTime + "&fe=" + endTime + "&filter=cxp");
 		
 		ts.login();
 		ts.takeScreenshot("AppServer");
@@ -51,7 +48,7 @@ public class TakeScreenshot_Test {
 	}
 	
 	public void hosts(){
-		driver.findElement(By.cssSelector(".app-nav>a:nth-child(7)>.text")).click();
+		driver.findElement(By.cssSelector(".app-nav>a:nth-child(8)>.text")).click();
 		while(!driver.findElement(By.cssSelector(graph)).isDisplayed()){
 			try {
 				Thread.sleep(500);
