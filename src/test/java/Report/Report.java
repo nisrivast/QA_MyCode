@@ -47,7 +47,6 @@ public class Report {
 				}
 			br.close();
 			while ((line2 = br2.readLine()) != null) {
-				//startTime = startTime.concat(line);
 				
 				startTime = startTime.concat(line2);
 				}

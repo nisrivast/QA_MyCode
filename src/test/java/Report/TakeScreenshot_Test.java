@@ -48,7 +48,8 @@ public class TakeScreenshot_Test {
 	}
 	
 	public void hosts(){
-		driver.findElement(By.cssSelector(".app-nav>a:nth-child(8)>.text")).click();
+		//driver.findElement(By.cssSelector(".app-nav>a:nth-child(8)>.text")).click();
+		driver.get("https://cengagecloud.tv.appneta.com/app/CXP_Stage_App/hosts#fs="+Report.startTime + "&fe=" + endTime + "&filter=cxp");
 		while(!driver.findElement(By.cssSelector(graph)).isDisplayed()){
 			try {
 				Thread.sleep(500);
