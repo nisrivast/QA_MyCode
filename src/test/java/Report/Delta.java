@@ -32,7 +32,6 @@ public class Delta {
 					br2 = new BufferedReader(new FileReader(afterTest));
 				
 				while ((line1 = br1.readLine()) != null && (line2 = br2.readLine()) != null) {
-					// use comma as separator
 					String[] data1 = line1.split(cvsSplitBy);
 					String[] data2 = line2.split(cvsSplitBy);
 					

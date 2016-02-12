@@ -18,7 +18,6 @@ public static void csv(){
 	      String fileName = TakeScreenshot_Test.filePath + "Aggregate.csv";
 
 			try {
-				
 				BufferedReader br = null;
 				String line = "";
 				String cvsSplitBy = ",";

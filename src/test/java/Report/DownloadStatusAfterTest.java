@@ -36,7 +36,6 @@ import java.net.URL;
 				FileOutputStream fos = new FileOutputStream(fileName);
 				fos.write(response);
 				fos.close();
-				//End download code
 			}		 
 			System.out.println("Finished");
 
