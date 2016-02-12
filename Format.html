@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='ISO-8859-1'>
+<title>Load Test Report</title>
+<style>
+body{
+font-family:tahoma;
+}
+table#t01 {
+    width:30%;
+}
+table#t01 tr:nth-child(even) {
+    background-color: #eee;
+}
+table#t01 tr:nth-child(odd) {
+   background-color:#fff;
+}
+table#t01 th	{
+    background-color: black;
+    color: white;
+}
+
+img{
+width:100%;
+}
+
+.img{
+width:auto !important;
+}
+
+table{
+width:60%;
+border:1px solid #ccddff;
+font-family:tahoma;
+font-size:14px;
+background:#fff;
+border-collapse:collapse;
+}
+table .tr{
+background:#6699ff;
+color:#ffffff;
+}
+
+table tr td{
+text-align:center;
+}
+
+.blank_table{
+background:none !important;
+border:none !important;
+}
+
+.graph{
+width:100%;
+}
+
+h3{
+color:#00081a;
+font-size:16px;
+text-decoration:underline;
+}
+
+h4{
+color:#002a80;
+font-size:14px;
+}
+
+a{
+color:#0055ff;
+text-decoration:none;
+}
+
+.anchor{
+font-size:13px;
+color:#00001a;
+font-weight:bold;
+}
+</style>
+</head>
+<body>
+<h3>JMETER Results</h3>
+<h4>- Aggregate Result:</h4>
+<table border='1'>
+  <tr class='tr'>
+    <th>Total Transactions</th>
+    <th>Avg Res Time (Sec)</th>
+    <th>Error%</th>		
+    
+  </tr>
+  <tr>
+    <td>transactions</td>
+    <td>avgrestime</td>	
+    <td>error</td>
+  </tr>
+</table>
+
+<h4>- Response Time</h4>
+<img  src='ResTime.png' class="img">
+
+<h3>Server Side Mertics</h3>
+
+<table border='1'>
+<thead><h4>- Server Status Pages</h4> </thead>
+  <tr class='tr'>
+    <td>Server</td> <td>10.160.200.141</td> <td>10.160.200.142</td> <td>10.160.200.143</td>
+  </tr>
+  <tr>
+    <td>BeforeTest</td>
+    <td><a href='10.160.200.141_BeforeTest_Status.csv'>Server1 before test</a></td>
+    <td><a href='10.160.200.142_BeforeTest_Status.csv'>Server2 before test</a></td>
+    <td><a href='10.160.200.143_BeforeTest_Status.csv'>Server3 before test</a></td>
+  </tr>
+  
+  <tr>
+    <td>AfterTest</td>
+    <td><a href='10.160.200.141_AfterTest_Status.csv'>Server1 After test</a></td>
+    <td><a href='10.160.200.142_AfterTest_Status.csv'>Server2 After test</a></td>
+    <td><a href='10.160.200.143_AfterTest_Status.csv'>Server3 After test</a></td>
+  </tr>
+  
+</table>
+<br>
+
+<table class='blank_table' style='width:50%; text-align:left;'>
+<thead><h4>- App Neta Data</h4></thead>
+	<tr> <td style='text-align:left;'>
+	<a target='_blank' href='https://cengagecloud.tv.appneta.com/app/CXP_Stage_App/app_server#fs=begintime&fe=endtime&filter=cxp' class='anchor'>App Servers: Layer Break Down Graph</a>
+	&nbsp;&nbsp;
+	<a target='_blank' href='https://cengagecloud.tv.appneta.com/app/CXP_Stage_App/hosts#fs=begintime&fe=endtime&filter=cxp' class='anchor'>Hosts - Load Average & Memory</a></td></tr>
+	
+	<tr><td style='text-align:left;'><h4>Screenshots</h4></td></tr>
+		
+	<tr> <td style='text-align:left;'><a target='_blank' href='AppServer_screenshot.png'>App Servers: Layer Break Down Graph</a>
+	<br><a target='_blank' href='Hosts_screenshot.png'>Hosts - Load Average & Memory</a>
+	</td></tr>
+</table>
+	<br>
+<table class='blank_table graph'>
+<thead><h3>Collected View</h3></thead>
+  <tr>
+	<td><h4>load: S-CXP4</h4><img alt='load' src='http://collectdjuliet.ilrn-support.com/collection3/bin/graph.cgi?hostname=s-cxp4.ilrn.com;plugin=load;type=load;begin=begintime;end=endtime'></td>
+	<td><h4>load: S-CXP5</h4><img alt='load' src='http://collectdjuliet.ilrn-support.com/collection3/bin/graph.cgi?hostname=s-cxp5.ilrn.com;plugin=load;type=load;begin=begintime;end=endtime'></td>
+	<td><h4>load: S-CXP6</h4><img alt='load' src='http://collectdjuliet.ilrn-support.com/collection3/bin/graph.cgi?hostname=s-cxp5.ilrn.com;plugin=load;type=load;begin=begintime;end=endtime'></td>
+  </tr>
+ 
+  <tr>
+ 	<td><h4>cpu: S-CXP4</h4><img alt='cpu0' src='http://collectdjuliet.ilrn-support.com/collection3/bin/graph.cgi?hostname=s-cxp4.ilrn.com;plugin=cpu;plugin_instance=0;type=cpu;begin=begintime;end=endtime' style='height:238px;'></td>
+ 	<td><h4>cpu: S-CXP5</h4><img alt='cpu0' src='http://collectdjuliet.ilrn-support.com/collection3/bin/graph.cgi?hostname=s-cxp5.ilrn.com;plugin=cpu;plugin_instance=0;type=cpu;begin=begintime;end=endtime' style='height:238px;'></td>
+ 	<td><h4>cpu: S-CXP6</h4><img alt='cpu0' src='http://collectdjuliet.ilrn-support.com/collection3/bin/graph.cgi?hostname=s-cxp6.ilrn.com;plugin=cpu;plugin_instance=0;type=cpu;begin=begintime;end=endtime' style='height:238px;'></td>
+ </tr>
+ <tr>
+ 	<td><img alt='cpu0' src='http://collectdjuliet.ilrn-support.com/collection3/bin/graph.cgi?hostname=s-cxp4.ilrn.com;plugin=cpu;plugin_instance=1;type=cpu;begin=begintime;end=endtime' style='height:238px;'></td>
+ 	<td><img alt='cpu0' src='http://collectdjuliet.ilrn-support.com/collection3/bin/graph.cgi?hostname=s-cxp5.ilrn.com;plugin=cpu;plugin_instance=1;type=cpu;begin=begintime;end=endtime' style='height:238px;'></td>
+ 	<td><img alt='cpu0' src='http://collectdjuliet.ilrn-support.com/collection3/bin/graph.cgi?hostname=s-cxp6.ilrn.com;plugin=cpu;plugin_instance=1;type=cpu;begin=begintime;end=endtime' style='height:238px;'></td>
+ </tr>
+ <tr>
+ 	<td><img alt='cpu0' src='http://collectdjuliet.ilrn-support.com/collection3/bin/graph.cgi?hostname=s-cxp4.ilrn.com;plugin=cpu;plugin_instance=2;type=cpu;begin=begintime;end=endtime' style='height:238px;'></td>
+ 	<td><img alt='cpu0' src='http://collectdjuliet.ilrn-support.com/collection3/bin/graph.cgi?hostname=s-cxp5.ilrn.com;plugin=cpu;plugin_instance=2;type=cpu;begin=begintime;end=endtime' style='height:238px;'></td>
+ 	<td><img alt='cpu0' src='http://collectdjuliet.ilrn-support.com/collection3/bin/graph.cgi?hostname=s-cxp6.ilrn.com;plugin=cpu;plugin_instance=2;type=cpu;begin=begintime;end=endtime' style='height:238px;'></td>
+ </tr>
+ </table>
+
+</body>
+</html>
