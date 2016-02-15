@@ -14,7 +14,7 @@ import org.testng.annotations.Test;
 public class BeginTest {
 
 	static long startTime = System.currentTimeMillis() / 1000L;
-	static String filePath = "C:/Users/admin/.jenkins/jobs/CXP_DemoLoadTest/workspace";
+	static String filePath = "C:/Users/admin/.jenkins/jobs/CXP_DemoLoadTest/workspace/";
 
 	@Test
 	public static void beforeTest() throws IOException{
