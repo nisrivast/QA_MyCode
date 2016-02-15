@@ -57,7 +57,7 @@ public class Report {
 	
 	      frontEnd = frontEnd.replace("avgrestime", CSVReader.restime1);
 	      frontEnd = frontEnd.replace("transactions", CSVReader.ttransactions);
-	      frontEnd = frontEnd.replace("error", CSVReader.errorrate);
+	      frontEnd = frontEnd.replace("error", CSVReader.errorrate).replace("percentile", CSVReader.percentile);
 	      System.out.println("***" +TakeScreenshot_Test.endTime);
 	      System.out.println("***" + startTime);
 	      frontEnd = frontEnd.replaceAll("begintime", startTime);

@@ -12,6 +12,7 @@ public class CSVReader {
 	static String restime1;
 	static String errorrate;
 	static String ttransactions;
+	static String percentile;
 	
 public static void csv(){
 
@@ -28,6 +29,7 @@ public static void csv(){
 					if (data[0].equalsIgnoreCase("Total")){
 						ttransactions = data[1];
 						restime1 = data[2];
+						percentile = data[4];
 						errorrate = data[7];
 					}
 				}

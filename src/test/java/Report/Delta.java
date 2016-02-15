@@ -21,7 +21,7 @@ public class Delta {
 				
 				String cvsSplitBy = ",";
 				
-				for(int i=0;i<2;i++){
+				for(int i=0;i<=2;i++){
 					
 					String beofeTest = TakeScreenshot_Test.filePath + url[i] + "_BeforeTest_Status.csv";
 					String afterTest = TakeScreenshot_Test.filePath + url[i] + "_AfterTest_Status.csv";
