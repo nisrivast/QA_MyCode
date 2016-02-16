@@ -18,6 +18,7 @@ public class Report {
 	    boolean bool;
 	    String frontEnd = "";
 	    CSVReader.csv();
+	    CSVReader.getBuild();
 	    CSVReader.writeComparisionCSV();
 	    CSVReader.readcomparisionCSV();
 	      
