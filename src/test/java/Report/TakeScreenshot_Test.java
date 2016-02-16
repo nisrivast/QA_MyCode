@@ -23,6 +23,7 @@ public class TakeScreenshot_Test {
 	@Test
 	public static void loadTestReport() throws IOException {
 		
+		Report.getbuildn();
 		DownloadStatusAfterTest.statusPagesafterTest();
 		Delta.sspDelta();
 		
@@ -32,12 +33,13 @@ public class TakeScreenshot_Test {
 		TakeScreenshot_Test ts = new TakeScreenshot_Test();
 		driver.get("https://cengagecloud.tv.appneta.com/app/CXP_Stage_App/app_server#fs="+Report.startTime + "&fe=" + endTime + "&filter=cxp");
 		
-		ts.login();
-		ts.takeScreenshot("AppServer");
-		ts.hosts();
-		ts.takeScreenshot("Hosts");
+		//ts.login();
+		//ts.takeScreenshot("AppServer");
+		//ts.hosts();
+		//ts.takeScreenshot("Hosts");
 		driver.close();
 		Report.createHTML();
+		
 		
 	}
 	

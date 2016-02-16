@@ -62,4 +62,15 @@
         <version>2.52.0</version>
     </dependency>
 	</dependencies>
+	<profiles>
+    <profile>
+        <activation>
+            <activeByDefault>true</activeByDefault>
+        </activation>
+        <properties>
+            <build.number>${env.BUILD_NUMBER}</build.number>
+        </properties>
+    </profile>
+</profiles>
+	
 </project>

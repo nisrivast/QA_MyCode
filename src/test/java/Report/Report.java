@@ -74,4 +74,9 @@ public class Report {
 				e.printStackTrace();
 			}
 	}
+	
+	public static void getbuildn(){
+		String bnumber = System.getProperty("BUILD_NUMBER");
+		System.out.println(bnumber);
+	}
 }
