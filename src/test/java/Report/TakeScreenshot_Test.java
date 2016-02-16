@@ -17,13 +17,13 @@ public class TakeScreenshot_Test {
 	static long endTime = System.currentTimeMillis() / 1000L;
 
 	static String filePath = "C:/Users/admin/.jenkins/jobs/CXP_DemoLoadTest/workspace/";
+	static String aggrgateCSVPath = "C:/Users/admin/.jenkins/jobs/CXP_DemoLoadTest/builds/";
 	static WebDriver driver;
 	static String graph =".nav-tabs-content>div:nth-child(1)>div:nth-child(1)>.clearfix>ul>li:nth-child(2)>.chart>div:nth-child(2)>svg";
 	
 	@Test
 	public static void loadTestReport() throws IOException {
-		
-		Report.getbuildn();
+
 		DownloadStatusAfterTest.statusPagesafterTest();
 		Delta.sspDelta();
 		

@@ -2,6 +2,7 @@ package Report;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -9,16 +10,22 @@ import java.io.IOException;
 
 public class CSVReader {
 	
-	static String restime1;
+	static String restime1, comp_restime;
 	static String errorrate;
 	static String ttransactions;
 	static String percentile;
 	
-public static void csv(){
+	static String bnumber = System.getProperty("BUILD_NUMBER");
+	static String rt_0, bn_0;
+	static String rt_1, bn_1;
+	static String rt_2, bn_2;
+	static String rt_3, bn_3;
+	static String rt_4, bn_4;
+	
+public static void csv() throws IOException{
 
 	      String fileName = TakeScreenshot_Test.filePath + "Aggregate.csv";
 
-			try {
 				BufferedReader br = null;
 				String line = "";
 				String cvsSplitBy = ",";
@@ -34,11 +41,67 @@ public static void csv(){
 					}
 				}
 				br.close();
-			}	
-			 catch (IOException e) {
-				e.printStackTrace();
-			} 
-		}	
- 
-}	
+		}
 
+public static void writeComparisionCSV() throws IOException{
+	
+	BufferedWriter bw2 = null;
+	bw2 = new BufferedWriter(new FileWriter(TakeScreenshot_Test.filePath + "comparision.csv"));
+	
+	bw2.write("Build" + "," + bnumber + "," + Integer.toString(Integer.parseInt(bnumber)-1) + "," + Integer.toString(Integer.parseInt(bnumber)-2));
+	bw2.append("," + Integer.toString(Integer.parseInt(bnumber)-3) + "," + Integer.toString(Integer.parseInt(bnumber)-4) + "\n");
+	bw2.append("ResponseTime" + ",");
+
+	for (int i=Integer.parseInt(bnumber); i>Integer.parseInt(bnumber)-4; i--){
+		String aggregateCSV = TakeScreenshot_Test.aggrgateCSVPath  + i + "/" + "Aggregate.csv";
+		
+		BufferedReader br2 = null;
+		String line2 = "";
+		String cvsSeparator = ",";
+
+		br2 = new BufferedReader(new FileReader(aggregateCSV));
+
+		while ((line2 = br2.readLine()) != null) {
+			String[] data = line2.split(cvsSeparator);
+			if (data[0].equalsIgnoreCase("Total")){
+				comp_restime = data[2];
+			}
+			bw2.append(comp_restime);
+			if (i>Integer.parseInt(bnumber)-4){
+				bw2.append(",");
+			}
+			br2.close();
+		}
+	}
+	bw2.close();
+}
+
+public static void readcomparisionCSV() throws IOException{
+	String compCSV = TakeScreenshot_Test.filePath + "comparision.csv";
+
+	BufferedReader br = null;
+	String line = "";
+	String cvsSplitBy = ",";
+	br = new BufferedReader(new FileReader(compCSV));
+	
+	while ((line = br.readLine()) != null) {
+		String[] data = line.split(cvsSplitBy);
+		if (data[0].equalsIgnoreCase("Build")){
+			bn_0 = data[1];
+			bn_1 = data[2];
+			bn_2 = data[3];
+			bn_3 = data[4];
+			bn_4 = data[5];
+		}
+		
+		if (data[0].equalsIgnoreCase("ResponseTime")){
+			rt_0 = data[1];
+			rt_1 = data[2];
+			rt_2 = data[3];
+			rt_3 = data[4];
+			rt_4 = data[5];
+		}
+	}
+	br.close();
+}
+}	
