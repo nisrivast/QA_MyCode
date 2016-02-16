@@ -35,13 +35,9 @@ public class Report {
 
 	    BufferedReader br2 = null;
 		String line2 = "";
-		
-		try {
+
 			br = new BufferedReader(new FileReader("Format.html"));
 			br2 = new BufferedReader(new FileReader(TakeScreenshot_Test.filePath + "StartTime.txt"));
-		} catch (FileNotFoundException e1) {
-			e1.printStackTrace();
-		}
 
 			while ((line = br.readLine()) != null) {
 				frontEnd = frontEnd.concat(line);
@@ -50,7 +46,7 @@ public class Report {
 			while ((line2 = br2.readLine()) != null) {
 				startTime = startTime.concat(line2);
 				}
-			br.close();
+			br2.close();
 	
 	      frontEnd = frontEnd.replace("avgrestime", CSVReader.restime1);
 	      frontEnd = frontEnd.replace("transactions", CSVReader.ttransactions);
