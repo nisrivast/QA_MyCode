@@ -72,7 +72,7 @@ public static void writeComparisionCSV() throws IOException{
 	bw2.append("," + Integer.toString(Integer.parseInt(bnumber)-3) + "," + Integer.toString(Integer.parseInt(bnumber)-4) + "\n");
 	bw2.append("ResponseTime" + ",");
 
-	for (int i=Integer.parseInt(bnumber); i>Integer.parseInt(bnumber)-4; i--){
+	for (int i=Integer.parseInt(bnumber); i>Integer.parseInt(bnumber)-5; i--){
 		String aggregateCSV = TakeScreenshot_Test.aggrgateCSVPath  + i + "/" + "Aggregate.csv";
 		
 		BufferedReader br2 = null;
