@@ -38,7 +38,13 @@ public class TakeScreenshot_Test {
 		//ts.hosts();
 		//ts.takeScreenshot("Hosts");
 		//driver.close();
-		Report.createHTML();
+		try{
+			Report.createHTML();
+		}
+		catch(Exception e){
+			e.printStackTrace();
+		}
+
 		
 		
 	}

@@ -20,17 +20,19 @@ import org.apache.commons.lang3.StringUtils;
 
 public class CSVReader {
 	
-	static String restime1, comp_restime;
+	static String restime1, comp_restime="";
 	static String errorrate;
 	static String ttransactions;
 	static String percentile;
+
+	static String cvsSplitBy = ",";
 	
-	static String bnumber; //= System.getProperty("BUILD_NUMBER");
-	static String rt_0, bn_0;
-	static String rt_1, bn_1;
-	static String rt_2, bn_2;
-	static String rt_3, bn_3;
-	static String rt_4, bn_4;
+	static String bnumber = ""; //= System.getProperty("BUILD_NUMBER");
+	static String rt_0 ="" , bn_0 = "";
+	static String rt_1 = "", bn_1 = "";
+	static String rt_2 = "", bn_2 = "";
+	static String rt_3 = "", bn_3 = "";
+	static String rt_4 = "", bn_4 = "";
 
 public static void getBuild() throws IOException{
 	URL url = new URL("http://localhost:8080/job/CXP_DemoLoadTest/lastSuccessfulBuild/");
@@ -48,7 +50,6 @@ public static void csv() throws IOException{
 
 				BufferedReader br = null;
 				String line = "";
-				String cvsSplitBy = ",";
 				br = new BufferedReader(new FileReader(fileName));
 				
 				while ((line = br.readLine()) != null) {
@@ -66,42 +67,46 @@ public static void csv() throws IOException{
 public static void writeComparisionCSV() throws IOException{
 	
 	BufferedWriter bw2 = null;
-	bw2 = new BufferedWriter(new FileWriter(TakeScreenshot_Test.filePath + "comparision.csv"));
+	bw2 = new BufferedWriter(new FileWriter(TakeScreenshot_Test.filePath + "comparison.csv"));
 	
 	bw2.write("Build" + "," + bnumber + "," + Integer.toString(Integer.parseInt(bnumber)-1) + "," + Integer.toString(Integer.parseInt(bnumber)-2));
 	bw2.append("," + Integer.toString(Integer.parseInt(bnumber)-3) + "," + Integer.toString(Integer.parseInt(bnumber)-4) + "\n");
-	bw2.append("ResponseTime" + ",");
+	bw2.append("ResponseTime");
+	bw2.append(",");
 
 	for (int i=Integer.parseInt(bnumber); i>Integer.parseInt(bnumber)-5; i--){
 		String aggregateCSV = TakeScreenshot_Test.aggrgateCSVPath  + i + "/" + "Aggregate.csv";
-		
+
 		BufferedReader br2 = null;
 		String line2 = "";
-		String cvsSeparator = ",";
 
 		br2 = new BufferedReader(new FileReader(aggregateCSV));
 
 		while ((line2 = br2.readLine()) != null) {
-			String[] data = line2.split(cvsSeparator);
+			String[] data = line2.split(cvsSplitBy);
+			
 			if (data[0].equalsIgnoreCase("Total")){
-				comp_restime = data[2];
+				comp_restime = data[2];	
 			}
-			bw2.append(comp_restime);
-			if (i>Integer.parseInt(bnumber)-4){
-				bw2.append(",");
-			}
-			br2.close();
+		}
+		br2.close();
+		bw2.append(comp_restime);
+		if (i>Integer.parseInt(bnumber)-4){
+			bw2.append(",");
+		}
+		
+		if (i==Integer.parseInt(bnumber)-4){
+			bw2.append("\n");
 		}
 	}
 	bw2.close();
 }
 
 public static void readcomparisionCSV() throws IOException{
-	String compCSV = TakeScreenshot_Test.filePath + "comparision.csv";
+	String compCSV = TakeScreenshot_Test.filePath + "comparison.csv";
 
 	BufferedReader br = null;
 	String line = "";
-	String cvsSplitBy = ",";
 	br = new BufferedReader(new FileReader(compCSV));
 	
 	while ((line = br.readLine()) != null) {
