@@ -56,8 +56,8 @@ public static void csv() throws IOException{
 					String[] data = line.split(cvsSplitBy);
 					if (data[0].equalsIgnoreCase("Total")){
 						ttransactions = data[1];
-						restime1 = data[2];
-						percentile = data[4];
+						restime1 = Double.toString((Double.parseDouble(data[2])/1000));
+						percentile = Double.toString((Double.parseDouble(data[4])/1000));
 						errorrate = data[7];
 					}
 				}

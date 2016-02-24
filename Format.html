@@ -101,7 +101,10 @@ font-weight:bold;
     chart.render();
   }
   </script>
-<script type="text/javascript" src="canvasjs.min.js"></script>
+  
+  <script type="text/javascript" src="http://canvasjs.com/assets/script/canvasjs.min.js"></script>
+  
+<!--  <script type="text/javascript" src="canvasjs.min.js"></script> -->
 </head>
 <body>
 <h3>JMETER Results</h3>
@@ -121,6 +124,12 @@ font-weight:bold;
     <td>percentile</td>
   </tr>
 </table>
+
+<table class='blank_table'>
+  <tr>
+    <td style='text-align:left;'><a target='_blank' href='Aggregate.csv'>Download Full Aggregate Results</a></td>
+   </tr>
+ </table>
 
 <h4>- Response Time</h4>
 <img  src='ResTime.png' class="img">
