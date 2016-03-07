@@ -8,6 +8,7 @@ import java.io.IOException;
 
 public class Delta {
 	static String event;
+	static String event1;
 	
 	public static void sspDelta() throws IOException{
 		
@@ -39,16 +40,32 @@ public class Delta {
 					if(data1[0].contains("Activity Service Events") && data2[0].contains("Activity Service Events")){
 						event = data1[0];
 						bw.write(event + "\n");
-						bw.append("name" + "," + "avg" + "," + "total" + "\n");
+						bw.append("name" + "," + "BeforeTest_avg" + "," + "AfterTest_avg" + "," + "Delta_avg" + "," + "BeforeTest_total" + "," + "AfterTest_total" + "," + "Delta_total" + "\n");
 					}
 					
-					if (data1.length>10 && data2.length>10 && event.contains("Activity") && !data2[9].contains("avg") && !data1[9].contains("avg")){
+					if(data1[0].contains("Item Service Events") && data2[0].contains("Item Service Events")){
+						event = data1[0];
+						bw.write(event + "\n");
+						bw.append("name" + "," + "BeforeTest_avg" + "," + "AfterTest_avg" + "," + "Delta_avg" + "," + "BeforeTest_total" + "," + "AfterTest_total" + "," + "Delta_total" + "\n");
+					}
+					
+					if (data1.length>10 && data2.length>10){
+						if (!data2[9].contains("avg") && !data1[9].contains("avg")){
 						bw.append(data1[0]);
+						bw.append(",");
+						bw.append(data1[9]);
+						bw.append(",");
+						bw.append(data2[9]);
 						bw.append(",");
 						bw.append(Float.toString(Float.parseFloat(data2[9])-Float.parseFloat(data1[9])));
 						bw.append(",");
+						bw.append(data1[17]);
+						bw.append(",");
+						bw.append(data2[17]);
+						bw.append(",");
 						bw.append(Float.toString(Float.parseFloat(data2[17])-Float.parseFloat(data1[17])));
 						bw.append("\n");
+						}
 					}
 				}
 				br1.close();
