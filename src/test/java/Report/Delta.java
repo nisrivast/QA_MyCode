@@ -40,30 +40,36 @@ public class Delta {
 					if(data1[0].contains("Activity Service Events") && data2[0].contains("Activity Service Events")){
 						event = data1[0];
 						bw.write(event + "\n");
-						bw.append("name" + "," + "BeforeTest_avg" + "," + "AfterTest_avg" + "," + "Delta_avg" + "," + "BeforeTest_total" + "," + "AfterTest_total" + "," + "Delta_total" + "\n");
+						bw.append("name" + "," + "BeforeTest_count" + "," + "AfterTest_count" + "," + "Delta_count%" + "," + "BeforeTest_avg" + "," + "AfterTest_avg" + "," + "Delta_avg%" + "," + "BeforeTest_total" + "," + "AfterTest_total" + "," + "Delta_total%" + "\n");
 					}
 					
 					if(data1[0].contains("Item Service Events") && data2[0].contains("Item Service Events")){
 						event = data1[0];
 						bw.write(event + "\n");
-						bw.append("name" + "," + "BeforeTest_avg" + "," + "AfterTest_avg" + "," + "Delta_avg" + "," + "BeforeTest_total" + "," + "AfterTest_total" + "," + "Delta_total" + "\n");
+						bw.append("name" + "," + "BeforeTest_count" + "," + "AfterTest_count" + "," + "Delta_count%" + "," + "BeforeTest_avg" + "," + "AfterTest_avg" + "," + "Delta_avg%" + "," + "BeforeTest_total" + "," + "AfterTest_total" + "," + "Delta_total%" + "\n");
 					}
 					
 					if (data1.length>10 && data2.length>10){
 						if (!data2[9].contains("avg") && !data1[9].contains("avg")){
 						bw.append(data1[0]);
 						bw.append(",");
+						bw.append(data1[1]);
+						bw.append(",");
+						bw.append(data2[1]);
+						bw.append(",");
+						bw.append(Float.toString(((Float.parseFloat(data2[1])-Float.parseFloat(data1[1]))/Float.parseFloat(data1[1]))*100));
+						bw.append(",");
 						bw.append(data1[9]);
 						bw.append(",");
 						bw.append(data2[9]);
 						bw.append(",");
-						bw.append(Float.toString(Float.parseFloat(data2[9])-Float.parseFloat(data1[9])));
+						bw.append(Float.toString(((Float.parseFloat(data2[9])-Float.parseFloat(data1[9]))/Float.parseFloat(data1[9]))*100));
 						bw.append(",");
 						bw.append(data1[17]);
 						bw.append(",");
 						bw.append(data2[17]);
 						bw.append(",");
-						bw.append(Float.toString(Float.parseFloat(data2[17])-Float.parseFloat(data1[17])));
+						bw.append(Float.toString(((Float.parseFloat(data2[17])-Float.parseFloat(data1[17]))/Float.parseFloat(data1[17]))*100));
 						bw.append("\n");
 						}
 					}
