@@ -2,7 +2,26 @@
 <html>
 <head>
 <meta charset='ISO-8859-1'>
-<title>Load Test Report</title>
+<title>CXP Load Test Report</title>
+
+<script type="text/javascript" src="https://cengage.logicmonitor.com/santaba/rpc/signIn?c=cengage&u=cxptest&p=Cxp%23test"></script>
+<script type="text/javascript">
+	function populate_img()
+	{
+		document.getElementById('load').innerHTML="<table class='blank_table graph'><tr><td>S-CXP4</td><td>S-CXP5</td><td>S-CXP6</td></tr><tr><td><img src='https://cengage.logicmonitor.com/santaba/rpc/getGraphImage?c=cengage&u=cxptest&p=demo&time=zoom&graphId=1869&dataSourceInstanceId=200464&type=host&startTime=begintime&endTime=finaltime'></td><td><img src='https://cengage.logicmonitor.com/santaba/rpc/getGraphImage?c=cengage&u=cxptest&p=demo&time=zoom&graphId=1869&dataSourceInstanceId=200466&type=host&startTime=begintime&endTime=finaltime'></td><td><img src='https://cengage.logicmonitor.com/santaba/rpc/getGraphImage?c=cengage&u=cxptest&p=demo&time=zoom&graphId=1869&dataSourceInstanceId=200465&type=host&startTime=begintime&endTime=finaltime'></td></tr></table>";
+
+		document.getElementById('cpu').innerHTML="<table class='blank_table graph'><tr><td>S-CXP4</td><td>S-CXP5</td><td>S-CXP6</td></tr><tr><td><img src='https://cengage.logicmonitor.com/santaba/rpc/getGraphImage?c=cengage&u=cxptest&p=demo&time=zoom&graphId=1868&dataSourceInstanceId=200464&type=host&startTime=begintime&endTime=finaltime'></td><td><img src='https://cengage.logicmonitor.com/santaba/rpc/getGraphImage?c=cengage&u=cxptest&p=demo&time=zoom&graphId=1868&dataSourceInstanceId=200466&type=host&startTime=begintime&endTime=finaltime'></td><td><img src='https://cengage.logicmonitor.com/santaba/rpc/getGraphImage?c=cengage&u=cxptest&p=demo&time=zoom&graphId=1868&dataSourceInstanceId=200465&type=host&startTime=begintime&endTime=finaltime'></td></tr></table>";
+
+		document.getElementById('disk').innerHTML="<table class='blank_table graph'><tr><td>S-CXP4</td><td>S-CXP5</td><td>S-CXP6</td></tr><tr><td><img src='https://cengage.logicmonitor.com/santaba/rpc/getGraphImage?c=cengage&u=cxptest&p=demo&time=zoom&graphId=1859&dataSourceInstanceId=199980&type=host&startTime=begintime&endTime=finaltime'></td><td><img src='https://cengage.logicmonitor.com/santaba/rpc/getGraphImage?c=cengage&u=cxptest&p=demo&time=zoom&graphId=1859&dataSourceInstanceId=200081&type=host&startTime=begintime&endTime=finaltime'></td><td><img src='https://cengage.logicmonitor.com/santaba/rpc/getGraphImage?c=cengage&u=cxptest&p=demo&time=zoom&graphId=1859&dataSourceInstanceId=200296&type=host&startTime=begintime&endTime=finaltime'></td></tr></table>";
+
+		document.getElementById('gc').innerHTML="<table class='blank_table graph'><tr><td>S-CXP4</td><td>S-CXP5</td><td>S-CXP6</td></tr><tr><td><img src='https://cengage.logicmonitor.com/santaba/rpc/getGraphImage?c=cengage&u=cxptest&p=demo&time=zoom&graphId=1128&dataSourceInstanceId=200158&type=host&startTime=begintime&endTime=finaltime'></td><td><img src='https://cengage.logicmonitor.com/santaba/rpc/getGraphImage?c=cengage&u=cxptest&p=demo&time=zoom&graphId=1128&dataSourceInstanceId=200045&type=host&startTime=begintime&endTime=finaltime'></td><td><img src='https://cengage.logicmonitor.com/santaba/rpc/getGraphImage?c=cengage&u=cxptest&p=demo&time=zoom&graphId=1128&dataSourceInstanceId=200199&type=host&startTime=begintime&endTime=finaltime'></td></tr></table>";
+
+		document.getElementById('memory').innerHTML="<table class='blank_table graph'><tr><td>S-CXP4</td><td>S-CXP5</td><td>S-CXP6</td></tr><tr><td><img src='https://cengage.logicmonitor.com/santaba/rpc/getGraphImage?c=cengage&u=cxptest&p=demo&time=zoom&graphId=47&dataSourceInstanceId=199966&type=host&startTime=begintime&endTime=finaltime'></td><td><img src='https://cengage.logicmonitor.com/santaba/rpc/getGraphImage?c=cengage&u=cxptest&p=demo&time=zoom&graphId=47&dataSourceInstanceId=200036&type=host&startTime=begintime&endTime=finaltime'></td><td><img src='https://cengage.logicmonitor.com/santaba/rpc/getGraphImage?c=cengage&u=cxptest&p=demo&time=zoom&graphId=47&dataSourceInstanceId=200147&type=host&startTime=begintime&endTime=finaltime'></td></tr></table>";
+
+	}
+	setTimeout(populate_img,2000);
+</script>
+
 <style>
 body{
   background:#FFFFFF;
@@ -209,7 +228,7 @@ font-weight:bold;
     var chart = new CanvasJS.Chart("chartContainer",
     {
       title:{
-        text: "Last 5 Tests"
+        text: "Res Time in Last 5 Successfull Builds"
       },
       
       axisX:{
@@ -319,50 +338,27 @@ font-weight:bold;
 </div>
 
 <hr size='0.5'>
-<h4>App Neta Data</h4>
-<div class="box-table">
-<table style='width:60%; text-align:left;'>
-	<tr> <td style='text-align:left;'>
-	<a target='_blank' href='https://cengagecloud.tv.appneta.com/app/CXP_Stage_App/app_server#fs=begintime&fe=endtime&filter=cxp'>App Servers: Layer Break Down Graph</a>
-	&nbsp;&nbsp;&nbsp;
-	<a target='_blank' href='https://cengagecloud.tv.appneta.com/app/CXP_Stage_App/hosts#fs=begintime&fe=endtime&filter=cxp'>Hosts - Load Average & Memory</a></td></tr>
-	
-	<!-- <tr><td style='text-align:left;'><h4>Screenshots</h4></td></tr>
-	<tr> <td style='text-align:left;'><a target='_blank' href='AppServer_screenshot.png'>App Servers: Layer Break Down Graph</a>
-	<br><a target='_blank' href='Hosts_screenshot.png'>Hosts - Load Average & Memory</a>
-	</td></tr> -->
-</table>
-</div>
+<h3>Logic Monitor</h3>
 
+<h4>Load Average on Individual Servers</h4>
+<div id='load'></div>
 <hr size='0.5'>
-<h3>Collected View</h3>
-<h4>Load on Individual Servers</h4>
-<table class='blank_table graph'>
-  <tr>
-	<td><h4>S-CXP4</h4><img alt='load' src='http://collectdjuliet.ilrn-support.com/collection3/bin/graph.cgi?hostname=s-cxp4.ilrn.com;plugin=load;type=load;begin=begintime;end=endtime'></td>
-	<td><h4>S-CXP5</h4><img alt='load' src='http://collectdjuliet.ilrn-support.com/collection3/bin/graph.cgi?hostname=s-cxp5.ilrn.com;plugin=load;type=load;begin=begintime;end=endtime'></td>
-	<td><h4>S-CXP6</h4><img alt='load' src='http://collectdjuliet.ilrn-support.com/collection3/bin/graph.cgi?hostname=s-cxp5.ilrn.com;plugin=load;type=load;begin=begintime;end=endtime'></td>
-  </tr> </table>
+  
+<h4>CPU Usage on Individual Servers</h4>
+<div id='cpu'></div><
+<hr size='0.5'>
+ 
+<h4>Disk Usage on Individual Servers</h4>
+<div id='disk'></div>
+<hr size='0.5'>
+  
+<h4>Memory Usage on Individual Servers</h4>
+<div id='memory'></div>
+<hr size='0.5'>
 
-  <hr size='0.5'>
-  <h4>CPU Usage on Individual Servers</h4>
-  <table class='blank_table graph'>
-  <tr>
- 	<td><h4>CPU 0_S-CXP4</h4><img alt='cpu0' src='http://collectdjuliet.ilrn-support.com/collection3/bin/graph.cgi?hostname=s-cxp4.ilrn.com;plugin=cpu;plugin_instance=0;type=cpu;begin=begintime;end=endtime' style='height:238px;'></td>
- 	<td><h4>CPU 1_S-CXP5</h4><img alt='cpu0' src='http://collectdjuliet.ilrn-support.com/collection3/bin/graph.cgi?hostname=s-cxp5.ilrn.com;plugin=cpu;plugin_instance=0;type=cpu;begin=begintime;end=endtime' style='height:238px;'></td>
- 	<td><h4>CPU 2_S-CXP6</h4><img alt='cpu0' src='http://collectdjuliet.ilrn-support.com/collection3/bin/graph.cgi?hostname=s-cxp6.ilrn.com;plugin=cpu;plugin_instance=0;type=cpu;begin=begintime;end=endtime' style='height:238px;'></td>
- </tr>
- <tr>
- 	<td><h4>CPU 1_S-CXP4</h4><img alt='cpu1' src='http://collectdjuliet.ilrn-support.com/collection3/bin/graph.cgi?hostname=s-cxp4.ilrn.com;plugin=cpu;plugin_instance=1;type=cpu;begin=begintime;end=endtime' style='height:238px;'></td>
- 	<td><h4>CPU 1_S-CXP5</h4><img alt='cpu1' src='http://collectdjuliet.ilrn-support.com/collection3/bin/graph.cgi?hostname=s-cxp5.ilrn.com;plugin=cpu;plugin_instance=1;type=cpu;begin=begintime;end=endtime' style='height:238px;'></td>
- 	<td><h4>CPU 1_S-CXP6</h4><img alt='cpu1' src='http://collectdjuliet.ilrn-support.com/collection3/bin/graph.cgi?hostname=s-cxp6.ilrn.com;plugin=cpu;plugin_instance=1;type=cpu;begin=begintime;end=endtime' style='height:238px;'></td>
- </tr>
- <tr>
- 	<td><h4>CPU 2_S-CXP4</h4><img alt='cpu2' src='http://collectdjuliet.ilrn-support.com/collection3/bin/graph.cgi?hostname=s-cxp4.ilrn.com;plugin=cpu;plugin_instance=2;type=cpu;begin=begintime;end=endtime' style='height:238px;'></td>
- 	<td><h4>CPU 2_S-CXP5</h4><img alt='cpu2' src='http://collectdjuliet.ilrn-support.com/collection3/bin/graph.cgi?hostname=s-cxp5.ilrn.com;plugin=cpu;plugin_instance=2;type=cpu;begin=begintime;end=endtime' style='height:238px;'></td>
- 	<td><h4>CPU 2_S-CXP6</h4><img alt='cpu2' src='http://collectdjuliet.ilrn-support.com/collection3/bin/graph.cgi?hostname=s-cxp6.ilrn.com;plugin=cpu;plugin_instance=2;type=cpu;begin=begintime;end=endtime' style='height:238px;'></td>
- </tr>
- </table>
+<h4>JVM GC Execution on Individual Servers</h4>
+<div id='gc'></div>
+<hr size='0.5'>
 
 </body>
 </html>

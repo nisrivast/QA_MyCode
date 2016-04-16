@@ -13,6 +13,8 @@ import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -27,7 +29,10 @@ public class CSVReader {
 
 	static String cvsSplitBy = ",";
 	
-	static String bnumber = ""; //= System.getProperty("BUILD_NUMBER");
+	static String bnumber = "";
+	static String successCheck = "";
+	static List<String> successBuilds = new ArrayList<String>();	
+	
 	static String rt_0 ="" , bn_0 = "";
 	static String rt_1 = "", bn_1 = "";
 	static String rt_2 = "", bn_2 = "";
@@ -42,6 +47,30 @@ public static void getBuild() throws IOException{
 	encoding = encoding == null ? "UTF-8" : encoding;
 	String body = IOUtils.toString(in, encoding);
 	bnumber = bnumber.concat((StringUtils.substringBetween(body, "Build #", "(").trim()));
+	successBuild();
+}
+
+public static void successBuild() throws IOException{
+	int count=1;
+	for(int i=0;count<6;i++){
+		
+		URL url1 = new URL("http://localhost:8080/job/CXP_DemoLoadTest/"+(Integer.parseInt(bnumber)-i)+"/");
+		URLConnection con = url1.openConnection();
+		InputStream in1 = con.getInputStream();
+		String encoding = con.getContentEncoding();
+		encoding = encoding == null ? "UTF-8" : encoding;
+		String body1 = IOUtils.toString(in1, encoding);
+		successCheck = successCheck.concat(StringUtils.substringBetween(body1, "buildTimeTrend", "Build #"));
+
+		if(successCheck.contains("Success")){
+					successBuilds.add(Integer.toString(Integer.parseInt(bnumber)-i));
+			count = count+1;
+			System.out.println(i + ": " + successBuilds);
+		}
+		successCheck = "";
+	}
+	//System.out.println(": " + successBuilds.get(0));
+	
 }
 	
 public static void csv() throws IOException{
@@ -69,12 +98,13 @@ public static void writeComparisionCSV() throws IOException{
 	BufferedWriter bw2 = null;
 	bw2 = new BufferedWriter(new FileWriter(TakeScreenshot_Test.filePath + "comparison.csv"));
 	
-	bw2.write("Build" + "," + bnumber + "," + Integer.toString(Integer.parseInt(bnumber)-1) + "," + Integer.toString(Integer.parseInt(bnumber)-2));
-	bw2.append("," + Integer.toString(Integer.parseInt(bnumber)-3) + "," + Integer.toString(Integer.parseInt(bnumber)-4) + "\n");
+	bw2.write("Build" + "," + successBuilds.get(0) + "," + successBuilds.get(1) + "," + successBuilds.get(2));
+	bw2.append("," + successBuilds.get(3) + "," + successBuilds.get(4) + "\n");
 	bw2.append("ResponseTime");
 	bw2.append(",");
 
-	for (int i=Integer.parseInt(bnumber); i>Integer.parseInt(bnumber)-5; i--){
+	//for (int i=Integer.parseInt(successBuilds.get(0)); i>Integer.parseInt(successBuilds.get(5)); i++){
+		for (String i: successBuilds){
 		String aggregateCSV = TakeScreenshot_Test.aggrgateCSVPath  + i + "/" + "Aggregate.csv";
 
 		BufferedReader br2 = null;
@@ -91,11 +121,11 @@ public static void writeComparisionCSV() throws IOException{
 		}
 		br2.close();
 		bw2.append(comp_restime);
-		if (i>Integer.parseInt(bnumber)-4){
+		if (!i.equalsIgnoreCase(successBuilds.get(4))){
 			bw2.append(",");
 		}
 		
-		if (i==Integer.parseInt(bnumber)-4){
+		if (i.equalsIgnoreCase(successBuilds.get(4))){
 			bw2.append("\n");
 		}
 	}

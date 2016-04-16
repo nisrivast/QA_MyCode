@@ -17,9 +17,13 @@ public class Report {
 		File newfile = new File(TakeScreenshot_Test.filePath + "FinalReport.html");
 	    boolean bool;
 	    String frontEnd = "";
+	    System.out.println("test1");
 	    CSVReader.csv();
+	    System.out.println("test2");
 	    CSVReader.getBuild();
+	    System.out.println("test3");
 	    CSVReader.writeComparisionCSV();
+	    System.out.println("test4");
 	    CSVReader.readcomparisionCSV();
 	      
 	     try{
@@ -56,12 +60,12 @@ public class Report {
 	      frontEnd = frontEnd.replace("rt_two", CSVReader.rt_2).replace("rt_three", CSVReader.rt_3);
 	      frontEnd = frontEnd.replace("rt_four", CSVReader.rt_4);
 	      
-	      frontEnd = frontEnd.replace("b_0", CSVReader.bn_0).replace("b_1", CSVReader.bn_1);
-	      frontEnd = frontEnd.replace("b_2", CSVReader.bn_2).replace("b_3", CSVReader.bn_3);
-	      frontEnd = frontEnd.replace("b_4", CSVReader.bn_4);
+	      frontEnd = frontEnd.replaceAll("b_0", CSVReader.bn_0).replaceAll("b_1", CSVReader.bn_1);
+	      frontEnd = frontEnd.replaceAll("b_2", CSVReader.bn_2).replaceAll("b_3", CSVReader.bn_3);
+	      frontEnd = frontEnd.replaceAll("b_4", CSVReader.bn_4);
 	      
 	      frontEnd = frontEnd.replaceAll("begintime", startTime);
-	      frontEnd = frontEnd.replaceAll("endtime", String.valueOf(TakeScreenshot_Test.endTime));
+	      frontEnd = frontEnd.replaceAll("finaltime", String.valueOf(TakeScreenshot_Test.finaltime));
 
 	     FileWriter fw;
 				fw = new FileWriter(newfile.getAbsoluteFile());
