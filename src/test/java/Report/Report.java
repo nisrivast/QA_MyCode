@@ -14,16 +14,12 @@ public class Report {
 	
 	public static void createHTML() throws IOException{
 		
-		File newfile = new File(TakeScreenshot_Test.filePath + "FinalReport.html");
+		File newfile = new File(GenerateReport_Test.filePath + "FinalReport.html");
 	    boolean bool;
 	    String frontEnd = "";
-	    System.out.println("test1");
 	    CSVReader.csv();
-	    System.out.println("test2");
 	    CSVReader.getBuild();
-	    System.out.println("test3");
 	    CSVReader.writeComparisionCSV();
-	    System.out.println("test4");
 	    CSVReader.readcomparisionCSV();
 	      
 	     try{
@@ -41,7 +37,7 @@ public class Report {
 		String line2 = "";
 
 			br = new BufferedReader(new FileReader("Format.html"));
-			br2 = new BufferedReader(new FileReader(TakeScreenshot_Test.filePath + "StartTime.txt"));
+			br2 = new BufferedReader(new FileReader(GenerateReport_Test.filePath + "StartTime.txt"));
 
 			while ((line = br.readLine()) != null) {
 				frontEnd = frontEnd.concat(line);
@@ -65,7 +61,7 @@ public class Report {
 	      frontEnd = frontEnd.replaceAll("b_4", CSVReader.bn_4);
 	      
 	      frontEnd = frontEnd.replaceAll("begintime", startTime);
-	      frontEnd = frontEnd.replaceAll("finaltime", String.valueOf(TakeScreenshot_Test.finaltime));
+	      frontEnd = frontEnd.replaceAll("finaltime", String.valueOf(GenerateReport_Test.finaltime));
 
 	     FileWriter fw;
 				fw = new FileWriter(newfile.getAbsoluteFile());

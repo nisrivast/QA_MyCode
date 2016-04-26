@@ -40,7 +40,7 @@ public class CSVReader {
 	static String rt_4 = "", bn_4 = "";
 
 public static void getBuild() throws IOException{
-	URL url = new URL("http://localhost:8080/job/CXP_DemoLoadTest/lastSuccessfulBuild/");
+	URL url = new URL(GenerateReport_Test.jenkinsURL + "lastSuccessfulBuild/");
 	URLConnection con = url.openConnection();
 	InputStream in = con.getInputStream();
 	String encoding = con.getContentEncoding();
@@ -54,7 +54,7 @@ public static void successBuild() throws IOException{
 	int count=1;
 	for(int i=0;count<6;i++){
 		
-		URL url1 = new URL("http://localhost:8080/job/CXP_DemoLoadTest/"+(Integer.parseInt(bnumber)-i)+"/");
+		URL url1 = new URL(GenerateReport_Test.jenkinsURL + (Integer.parseInt(bnumber)-i)+"/");
 		URLConnection con = url1.openConnection();
 		InputStream in1 = con.getInputStream();
 		String encoding = con.getContentEncoding();
@@ -68,14 +68,12 @@ public static void successBuild() throws IOException{
 			System.out.println(i + ": " + successBuilds);
 		}
 		successCheck = "";
-	}
-	//System.out.println(": " + successBuilds.get(0));
-	
+	}	
 }
 	
 public static void csv() throws IOException{
 
-	      String fileName = TakeScreenshot_Test.filePath + "Aggregate.csv";
+	      String fileName = GenerateReport_Test.filePath + "Aggregate.csv";
 
 				BufferedReader br = null;
 				String line = "";
@@ -96,16 +94,15 @@ public static void csv() throws IOException{
 public static void writeComparisionCSV() throws IOException{
 	
 	BufferedWriter bw2 = null;
-	bw2 = new BufferedWriter(new FileWriter(TakeScreenshot_Test.filePath + "comparison.csv"));
+	bw2 = new BufferedWriter(new FileWriter(GenerateReport_Test.filePath + "comparison.csv"));
 	
 	bw2.write("Build" + "," + successBuilds.get(0) + "," + successBuilds.get(1) + "," + successBuilds.get(2));
 	bw2.append("," + successBuilds.get(3) + "," + successBuilds.get(4) + "\n");
 	bw2.append("ResponseTime");
 	bw2.append(",");
 
-	//for (int i=Integer.parseInt(successBuilds.get(0)); i>Integer.parseInt(successBuilds.get(5)); i++){
 		for (String i: successBuilds){
-		String aggregateCSV = TakeScreenshot_Test.aggrgateCSVPath  + i + "/" + "Aggregate.csv";
+		String aggregateCSV = GenerateReport_Test.aggrgateCSVPath  + i + "/" + "Aggregate.csv";
 
 		BufferedReader br2 = null;
 		String line2 = "";
@@ -133,7 +130,7 @@ public static void writeComparisionCSV() throws IOException{
 }
 
 public static void readcomparisionCSV() throws IOException{
-	String compCSV = TakeScreenshot_Test.filePath + "comparison.csv";
+	String compCSV = GenerateReport_Test.filePath + "comparison.csv";
 
 	BufferedReader br = null;
 	String line = "";

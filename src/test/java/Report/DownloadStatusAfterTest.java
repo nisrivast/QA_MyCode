@@ -26,7 +26,7 @@ import java.net.URL;
 				if(connection.getResponseCode()==200)
 				
 				if(connection.getResponseCode()==200){
-					String fileName = TakeScreenshot_Test.filePath + url[i] + "_AfterTest_Status.csv";
+					String fileName = GenerateReport_Test.filePath + url[i] + "_AfterTest_Status.csv";
 					//download
 					InputStream in = new BufferedInputStream(link.openStream());
 					ByteArrayOutputStream out = new ByteArrayOutputStream();
@@ -44,9 +44,7 @@ import java.net.URL;
 					fos.write(response);
 					fos.close();
 				}
-			}		 
-			System.out.println("Finished");
-
+			}
 		}
 
 	}

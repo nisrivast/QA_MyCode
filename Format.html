@@ -223,12 +223,14 @@ color:#00001a;
 font-weight:bold;
 }
 </style>
+
 <script type="text/javascript">
   window.onload = function () {
     var chart = new CanvasJS.Chart("chartContainer",
     {
+    	 animationEnabled: true,
       title:{
-        text: "Res Time in Last 5 Successfull Builds"
+        text: "Res Time in Last 5 Successful Builds"
       },
       
       axisX:{
@@ -238,23 +240,28 @@ font-weight:bold;
    	  axisY:{
           title: "Res. Time (milliseconds)"
          },
-         
-	  animationEnabled: true,
-      data: [
 
+      data: [
       {
     	type: "line",
         dataPoints: [
-        { x: b_0, y: rt_zero, label: b_0},
-        { x: b_1, y: rt_one, label: b_1},
-        { x: b_2, y: rt_two, label: b_2},
-        { x: b_3, y: rt_three, label: b_3},
-		{ x: b_4, y: rt_four, label: b_4}
+        { y: rt_zero, label: 'b_0'},
+        { y: rt_one, label: 'b_1'},
+        { y: rt_two, label: 'b_2'},
+        { y: rt_three, label: 'b_3'},
+		{ y: rt_four, label: 'b_4'}
         ]
       }
       ]
     });
     chart.render();
+    
+    $("#chartContainer").onload(function () {
+
+    	var length = chart.options.data[0].dataPoints.length;
+          alert(length);
+
+    	});
   }
   </script>
   

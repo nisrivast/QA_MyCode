@@ -24,10 +24,10 @@ public class Delta {
 				
 				for(int i=0;i<=2;i++){
 					
-					String beofeTest = TakeScreenshot_Test.filePath + url[i] + "_BeforeTest_Status.csv";
-					String afterTest = TakeScreenshot_Test.filePath + url[i] + "_AfterTest_Status.csv";
+					String beofeTest = GenerateReport_Test.filePath + url[i] + "_BeforeTest_Status.csv";
+					String afterTest = GenerateReport_Test.filePath + url[i] + "_AfterTest_Status.csv";
 					
-					bw = new BufferedWriter(new FileWriter(TakeScreenshot_Test.filePath + url[i] + "_Delta.csv"));
+					bw = new BufferedWriter(new FileWriter(GenerateReport_Test.filePath + url[i] + "_Delta.csv"));
 
 					br1 = new BufferedReader(new FileReader(beofeTest));
 					br2 = new BufferedReader(new FileReader(afterTest));
